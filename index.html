@@ -17,6 +17,7 @@
       --red: #e74c3c;
       --road: #8e6c3c;
       --camp: #6b8e23;
+      --nav: #e65100;
     }
     * { box-sizing: border-box; }
     body {
@@ -25,207 +26,76 @@
       color: var(--ink);
       background: #f5f6f8;
       letter-spacing: 0;
+      -webkit-tap-highlight-color: transparent;
     }
+    a.nav { color: var(--nav); text-decoration: none; border-bottom: 1px dashed var(--nav); }
+    a.nav::after { content: " 🧭"; font-size: 12px; }
+    a.nav:hover { background: #fff3e0; }
     header {
-      min-height: 44vh;
+      min-height: 40vh;
       display: grid;
       align-items: end;
-      padding: 32px min(6vw, 72px) 40px;
-      background:
-        linear-gradient(180deg, rgba(4, 20, 40, 0.12), rgba(4, 20, 40, 0.8)),
-        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80") center/cover;
+      padding: 32px min(6vw, 72px) 36px;
+      background: linear-gradient(180deg, rgba(4, 20, 40, 0.1), rgba(4, 20, 40, 0.82)), url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80") center/cover;
       color: white;
     }
-    h1 {
-      max-width: 980px;
-      margin: 0;
-      font-size: clamp(28px, 5.5vw, 56px);
-      line-height: 1.08;
-      font-weight: 800;
-    }
-    header p {
-      max-width: 780px;
-      margin: 14px 0 0;
-      font-size: clamp(14px, 1.6vw, 18px);
-      line-height: 1.7;
-      opacity: 0.9;
-    }
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
-    }
-    .badge {
-      display: inline-block;
-      background: rgba(255,255,255,.16);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,.28);
-      padding: 4px 12px;
-      border-radius: 18px;
-      font-size: 13px;
-      font-weight: 600;
-    }
+    h1 { max-width: 980px; margin: 0; font-size: clamp(26px, 5vw, 52px); line-height: 1.08; font-weight: 800; }
+    header p { max-width: 780px; margin: 12px 0 0; font-size: clamp(14px, 1.5vw, 17px); line-height: 1.7; opacity: 0.9; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .badge { display: inline-block; background: rgba(255,255,255,.16); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.28); padding: 4px 11px; border-radius: 16px; font-size: 12px; font-weight: 600; }
     .badge.green { background: rgba(46,204,113,.25); border-color: rgba(46,204,113,.4); }
-    main {
-      width: min(1120px, calc(100% - 32px));
-      margin: 28px auto 72px;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 340px;
-      gap: 28px;
-    }
-    .day-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 28px 28px 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 12px rgba(0,0,0,.04);
-      border: 1px solid var(--line);
-    }
-    .day-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 6px;
-    }
-    .day-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      font-size: 20px;
-      font-weight: 800;
-      color: white;
-      flex-shrink: 0;
-    }
+    .badge.nav { background: rgba(255,152,0,.3); border-color: rgba(255,152,0,.5); }
+    main { width: min(1120px, calc(100% - 32px)); margin: 28px auto 72px; display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 28px; }
+    .day-card { background: #fff; border-radius: 12px; padding: 28px 28px 24px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,.04); border: 1px solid var(--line); }
+    .day-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+    .day-num { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; font-size: 20px; font-weight: 800; color: white; flex-shrink: 0; }
     .day-num.road { background: var(--road); }
     .day-num.beach { background: #3da5d9; }
     .day-num.ocean { background: #1a6fb5; }
     .day-num.island { background: #2e8b57; }
     .day-num.home { background: #e67e22; }
-    .day-header h2 {
-      margin: 0;
-      font-size: 21px;
-      line-height: 1.3;
-    }
-    .day-meta {
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+    .day-header h2 { margin: 0; font-size: 21px; line-height: 1.3; }
+    .day-meta { color: var(--muted); font-size: 13px; margin-bottom: 14px; display: flex; flex-wrap: wrap; gap: 10px; }
     .day-meta .drive { color: var(--road); font-weight: 700; }
     .day-meta .camp { color: var(--camp); font-weight: 700; }
     .day-meta .hotel { color: var(--blue); font-weight: 700; }
     .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-    .timeline li {
-      display: grid;
-      grid-template-columns: 68px 1fr;
-      gap: 0;
-      align-items: start;
-      padding: 8px 0;
-    }
-    .time-slot {
-      color: var(--brand);
-      font-weight: 700;
-      font-size: 13px;
-      padding-top: 2px;
-      text-align: right;
-      padding-right: 10px;
-    }
+    .timeline li { display: grid; grid-template-columns: 68px 1fr; gap: 0; align-items: start; padding: 8px 0; }
+    .time-slot { color: var(--brand); font-weight: 700; font-size: 13px; padding-top: 2px; text-align: right; padding-right: 10px; }
     .time-slot.drive-slot { color: var(--road); }
     .time-slot.camp-slot { color: var(--camp); }
-    .event {
-      border-left: 3px solid var(--warm);
-      padding-left: 14px;
-      padding-bottom: 2px;
-    }
+    .event { border-left: 3px solid var(--warm); padding-left: 14px; padding-bottom: 2px; }
     .event.drive-event { border-left-color: var(--road); }
     .event.sleep-event { border-left-color: #a0b4c8; }
     .event.camp-event { border-left-color: var(--camp); }
-    .timeline h4 {
-      margin: 0 0 2px;
-      font-size: 15px;
-      line-height: 1.4;
-    }
-    .timeline .event p {
-      margin: 0 0 3px;
-      line-height: 1.65;
-      font-size: 14px;
-    }
-    .tag {
-      display: inline-block;
-      font-size: 11px;
-      padding: 1px 7px;
-      border-radius: 3px;
-      font-weight: 700;
-      margin-right: 4px;
-    }
+    .timeline h4 { margin: 0 0 2px; font-size: 15px; line-height: 1.4; }
+    .timeline .event p { margin: 0 0 3px; line-height: 1.65; font-size: 14px; }
+    .tag { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 3px; font-weight: 700; margin-right: 4px; }
     .tag.eat  { background: #fff3e0; color: #e65100; }
     .tag.stay { background: #e8f5e9; color: #2e7d32; }
     .tag.tip  { background: #fff9c4; color: #f57f17; }
     .tag.play { background: #e3f2fd; color: #1565c0; }
     .tag.camp { background: #e8f5e9; color: #33691e; }
-    .day-cost {
-      margin-top: 14px;
-      padding-top: 10px;
-      border-top: 2px dashed var(--line);
-      font-weight: 700;
-      font-size: 14px;
-    }
+    .tag.nav  { background: #fff3e0; color: #e65100; font-size: 10px; padding: 0px 5px; }
+    .day-cost { margin-top: 14px; padding-top: 10px; border-top: 2px dashed var(--line); font-weight: 700; font-size: 14px; }
     .day-cost.road { color: var(--road); }
     .day-cost.beach { color: #3da5d9; }
-    aside {
-      position: sticky;
-      top: 18px;
-      align-self: start;
-      display: grid;
-      gap: 16px;
-    }
-    .panel {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 18px;
-      box-shadow: 0 4px 16px rgba(25, 33, 42, .04);
-    }
-    .panel h3 {
-      margin: 0 0 10px;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    aside { position: sticky; top: 18px; align-self: start; display: grid; gap: 16px; }
+    .panel { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 18px; box-shadow: 0 4px 16px rgba(25, 33, 42, .04); }
+    .panel h3 { margin: 0 0 10px; font-size: 16px; display: flex; align-items: center; gap: 6px; }
     .panel ul { margin: 0; padding-left: 16px; line-height: 1.7; font-size: 13px; }
     .panel li { margin: 4px 0; }
     .budget-table { width: 100%; border-collapse: collapse; font-size: 13px; }
     .budget-table td { padding: 5px 0; border-bottom: 1px dotted var(--line); }
     .budget-table td:last-child { text-align: right; font-weight: 700; }
     .budget-table .total td { border-top: 2px solid var(--ink); font-size: 16px; color: var(--red); padding-top: 8px; }
-    .car-box {
-      background: linear-gradient(135deg, #1a1f26, #2c3e50);
-      color: #fff;
-      border-radius: 10px;
-      padding: 16px;
-      font-size: 13px;
-      line-height: 1.7;
-    }
+    .car-box { background: linear-gradient(135deg, #1a1f26, #2c3e50); color: #fff; border-radius: 10px; padding: 16px; font-size: 13px; line-height: 1.7; }
     .car-box strong { color: #4dffb8; }
-    .camp-box {
-      background: #e8f5e9;
-      border: 1px solid #a5d6a7;
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 13px;
-      line-height: 1.7;
-    }
-    .camp-box strong { color: #2e7d32; }
+    .camp-box { background: #e8f5e9; border: 1px solid #a5d6a7; border-radius: 8px; padding: 12px; font-size: 13px; line-height: 1.7; }
+    .nav-tip { background: #fff3e0; border: 1px solid #ffcc80; border-radius: 8px; padding: 12px; font-size: 12px; line-height: 1.6; text-align: center; }
+    .nav-tip strong { color: #e65100; }
     @media (max-width: 860px) {
-      header { min-height: 34vh; padding: 22px 14px 26px; }
+      header { min-height: 30vh; padding: 22px 14px 24px; }
       main { grid-template-columns: 1fr; width: min(100% - 20px, 600px); }
       aside { position: static; }
       .timeline li { grid-template-columns: 52px 1fr; }
@@ -237,14 +107,13 @@
   <header>
     <div>
       <h1>🚗 西安 → 烟台<br>7天亲子自驾游</h1>
-      <p>2大1小（5岁娃）· 比亚迪宋Pro DM-i 115km · 路上车上露营 · 8月初<br>真实节奏：2天开到 + 3天纯玩 + 2天开回</p>
+      <p>2大1小（5岁娃）· 比亚迪宋Pro DM-i 115km · 路上车上露营 · 8月初 · <strong>点击地点🧭直接导航</strong></p>
       <div class="badge-row">
         <span class="badge">👨‍👩‍👧 2成人+1儿童(5岁)</span>
         <span class="badge">🚗 宋Pro DM-i 115km</span>
-        <span class="badge green">💰 总预算≈3,700元</span>
+        <span class="badge green">💰 总预算≈4,200元</span>
         <span class="badge">🏕️ 车上露营×3晚</span>
-        <span class="badge">🏖️ 沙滩·海洋馆·海岛</span>
-        <span class="badge">😴 每天午睡·轻松</span>
+        <span class="badge nav">🧭 点地名=高德导航</span>
       </div>
     </div>
   </header>
@@ -252,531 +121,182 @@
   <main>
     <div>
 
-      <!-- 车辆 & 预算速览 -->
+      <!-- 速览卡 -->
       <div class="day-card" style="background: linear-gradient(135deg, #f8f9fb, #eef1f5);">
-        <div class="day-header">
-          <div class="day-num" style="background: var(--ink);">📊</div>
-          <h2>行程速览 & 费用精算</h2>
-        </div>
+        <div class="day-header"><div class="day-num" style="background: var(--ink);">📋</div><h2>行程速览 & 费用精算</h2></div>
         <div class="day-meta">
-          <span>Day1 🛣️ 西安→菏泽750km</span>
-          <span>Day2 🛣️ 菏泽→烟台647km</span>
+          <span>Day1 🛣️ <a class="nav" href="https://uri.amap.com/search?keyword=菏泽服务区&callnative=1">西安→菏泽</a> 750km</span>
+          <span>Day2 🛣️ <a class="nav" href="https://uri.amap.com/navigation?to=121.447755,37.464551,烟台莱山区&mode=car&callnative=1">菏泽→烟台</a> 647km</span>
           <span>Day3 🏖️ 沙滩日</span>
           <span>Day4 🐳 海洋日</span>
           <span>Day5 🏝️ 海岛日</span>
-          <span>Day6 🛣️ 烟台→菏泽750km</span>
-          <span>Day7 🏠 菏泽→西安647km</span>
+          <span>Day6 🛣️ 烟台→菏泽 750km</span>
+          <span>Day7 🏠 菏泽→西安 647km</span>
         </div>
-        <p style="font-size: 14px; line-height: 1.8; margin: 0;">
+        <p style="font-size:14px;line-height:1.8;margin:0;">
           🚗 <strong>比亚迪宋Pro DM-i 115km</strong>：高速HEV模式油耗 ≈5.5L/100km，满油满电出发。<br>
-          🏕️ <strong>3晚车上露营</strong>（Day1、Day2午休、Day6）——后排放倒+床垫，115km电池带空调过夜无压力。<br>
-          🍜 <strong>餐饮精打细算</strong>：自带干粮+便宜小馆子，3人≈100元/天。
+          🏕️ <strong>3晚车上露营</strong>（Day1、Day6）— 后排放倒+床垫，115km电池带空调过夜。<br>
+          🍜 <strong>餐饮精打细算</strong>：自带干粮+便宜小馆子，3人≈100元/天。<br>
+          🧭 <strong>橙色下划线地点</strong>：点击直接跳转高德地图导航！
         </p>
       </div>
 
       <!-- Day 1 -->
       <div class="day-card">
-        <div class="day-header">
-          <div class="day-num road">1</div>
-          <h2>西安 → 菏泽服务区 · 首日冲刺</h2>
-        </div>
-        <div class="day-meta">
-          <span class="drive">🚗 驾驶 ≈750km / 10h（含休息，8:00出发）</span>
-          <span class="camp">🏕️ 车上露营</span>
-          <span>📅 8月1日</span>
-        </div>
+        <div class="day-header"><div class="day-num road">1</div><h2>西安 → 菏泽服务区 · 首日冲刺</h2></div>
+        <div class="day-meta"><span class="drive">🚗 ≈750km / 10h（8:00出发）</span><span class="camp">🏕️ 车上露营</span><span>📅 8月1日</span></div>
         <ul class="timeline">
           <li>
             <div class="time-slot drive-slot">8:00</div>
             <div class="event drive-event">
               <h4>🚗 满油满电出发！</h4>
-              <p>睡到自然醒，不慌不忙。提前加满油（≈52L油箱）+ 家充充满电。后备箱装好床垫、被子、枕头。<span class="tag tip">满油满电</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">8:30</div>
-            <div class="event drive-event">
-              <h4>🛑 三门峡/洛阳 服务区</h4>
-              <p>第一次休息15分钟。娃下车跑跳，吃自带零食。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">11:00</div>
-            <div class="event drive-event">
-              <h4>🛑 郑州附近服务区</h4>
-              <p>休息+自带午餐（自热米饭/泡面+火腿肠），省钱省时间。<span class="tag eat">自带午饭</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">12:00</div>
-            <div class="event drive-event">
-              <h4>🚗 下午驾驶（娃午睡）</h4>
-              <p>吃完饭娃犯困，车上自然入睡。开HEV模式，5.5L/100km，安静省油。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">15:00</div>
-            <div class="event drive-event">
-              <h4>🛑 菏泽附近服务区</h4>
-              <p>休息+加油（中途补一次油≈150元）。活动20分钟，给娃放放风。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">17:00</div>
-            <div class="event camp-event">
-              <h4>🏕️ 到达露营服务区（菏泽/济宁附近）</h4>
-              <p>不赶了，找个大服务区停车过夜。后排放倒铺床垫，一家三口刚好。<span class="tag camp">车上露营</span></p>
-              <p>💡 <strong>宋Pro露营优势：</strong>115km电池带空调一整晚（约耗电30-40%），8月夜晚车内凉爽舒适，不用发动引擎，安静又省油！</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">18:00</div>
-            <div class="event">
-              <h4>🍜 服务区晚餐</h4>
-              <p>服务区简餐或自带泡面，人均≈10元。饭后服务区遛娃散步。<span class="tag eat">晚餐</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">20:00</div>
-            <div class="event camp-event">
-              <h4>😴 车上睡觉</h4>
-              <p>开EV模式+空调+外循环，安静舒适过夜。车窗留缝+遮阳挡。晚安！</p>
-            </div>
-          </li>
-        </ul>
-        <div class="day-cost road">💰 本日：油费≈240 + 过路费≈300 + 餐饮≈30 + 住宿0元（露营）= ≈570元</div>
-      </div>
-
-      <!-- Day 2 -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-num road">2</div>
-          <h2>菏泽 → 烟台 · 抵达大海！</h2>
-        </div>
-        <div class="day-meta">
-          <span class="drive">🚗 驾驶 ≈647km / 8.5h（含休息，8:00出发）</span>
-          <span class="hotel">🏨 住烟台</span>
-          <span>📅 8月2日</span>
-        </div>
-        <ul class="timeline">
-          <li>
-            <div class="time-slot">7:30</div>
-            <div class="event camp-event">
-              <h4>🌅 服务区醒来</h4>
-              <p>不用急，慢慢来。服务区卫生间洗漱，自带早餐（面包+牛奶+煮鸡蛋）。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">8:00</div>
-            <div class="event drive-event">
-              <h4>🚗 出发！</h4>
-              <p>剩余约647km，预计傍晚抵达烟台。HEV模式继续，油耗≈5.5L/100km。</p>
+              <p>从<a class="nav" href="https://uri.amap.com/navigation?to=108.939645,34.343207,西安&mode=car&callnative=1">西安</a>出发，走G30连霍高速向东。提前加满油（≈52L油箱）+ 家充充满电。<span class="tag tip">满油满电</span></p>
             </div>
           </li>
           <li>
             <div class="time-slot drive-slot">10:30</div>
             <div class="event drive-event">
-              <h4>🛑 济南附近服务区</h4>
-              <p>休息15分钟，活动筋骨。娃下车跑一跑。</p>
+              <h4>🛑 <a class="nav" href="https://uri.amap.com/search?keyword=三门峡服务区&callnative=1">三门峡</a>/<a class="nav" href="https://uri.amap.com/search?keyword=洛阳服务区&callnative=1">洛阳</a> 服务区</h4>
+              <p>第一次休息15分钟。娃下车跑跳，大人吃自带早餐（面包+牛奶）。</p>
             </div>
           </li>
           <li>
-            <div class="time-slot">11:30</div>
-            <div class="event">
-              <h4>🍜 潍坊附近下高速午餐</h4>
-              <p>找个便宜小馆子，3人≈30元（面条+小菜）。休息40分钟。<span class="tag eat">午餐</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">12:30</div>
+            <div class="time-slot drive-slot">12:00</div>
             <div class="event drive-event">
-              <h4>🚗 最后冲刺（娃午睡）</h4>
-              <p>约2.5小时到烟台，娃车上自然午睡。</p>
+              <h4>🛑 <a class="nav" href="https://uri.amap.com/search?keyword=郑州服务区&callnative=1">郑州附近服务区</a></h4>
+              <p>休息+自带午餐（自热米饭/泡面+火腿肠），省钱省时间。<span class="tag eat">自带午饭</span></p>
             </div>
           </li>
           <li>
-            <div class="time-slot">15:30</div>
-            <div class="event">
-              <h4>🎉 抵达烟台莱山区！</h4>
-              <p>入住 <strong>新成宾馆(黄务店)</strong> ≈120元/晚，连住4晚。时间刚好，安顿好就去看海！<span class="tag stay">住宿</span></p>
-            </div>
+            <div class="time-slot drive-slot">13:00</div>
+            <div class="event drive-event"><h4>🚗 下午驾驶（娃午睡）</h4><p>吃完饭娃犯困，车上自然入睡。开HEV模式，5.5L/100km。</p></div>
           </li>
           <li>
-            <div class="time-slot">16:30</div>
-            <div class="event">
-              <h4>🌊 大海初体验！趣浪国际沙滩公园</h4>
-              <p>免费！2天开车终于见到大海——娃光脚踩水那一刻，值了。<span class="tag play">沙滩</span></p>
-            </div>
+            <div class="time-slot drive-slot">16:00</div>
+            <div class="event drive-event"><h4>🛑 <a class="nav" href="https://uri.amap.com/search?keyword=菏泽服务区&callnative=1">菏泽附近服务区</a></h4><p>休息+加油（补一次油≈150元）。活动20分钟。</p></div>
           </li>
           <li>
             <div class="time-slot">18:30</div>
-            <div class="event">
-              <h4>🍜 晚餐：福祚黑猪肉馄饨</h4>
-              <p>3人≈30元，清淡鲜美，舟车劳顿后的治愈。<span class="tag eat">晚餐</span></p>
+            <div class="event camp-event">
+              <h4>🏕️ 到达露营服务区（<a class="nav" href="https://uri.amap.com/search?keyword=菏泽服务区&callnative=1">菏泽/济宁附近</a>）</h4>
+              <p>找个大服务区停车过夜。后排放倒铺床垫，一家三口刚好。<span class="tag camp">车上露营</span></p>
+              <p>💡 <strong>宋Pro露营优势：</strong>115km电池带空调一整晚（约耗电30-40%），不用发动引擎。</p>
             </div>
+          </li>
+          <li><div class="time-slot">19:30</div><div class="event"><h4>🍜 服务区晚餐</h4><p>自带泡面或服务区简餐，人均≈10元。饭后遛娃散步。<span class="tag eat">晚餐</span></p></div></li>
+          <li><div class="time-slot">21:00</div><div class="event camp-event"><h4>😴 车上睡觉</h4><p>EV模式+空调+外循环，车窗留缝+遮阳挡。晚安！</p></div></li>
+        </ul>
+        <div class="day-cost road">💰 本日：油费≈240 + 过路费≈300 + 餐饮≈30 + 住宿0元 = ≈570元</div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="day-card">
+        <div class="day-header"><div class="day-num road">2</div><h2>菏泽 → 烟台 · 抵达大海！</h2></div>
+        <div class="day-meta"><span class="drive">🚗 ≈647km / 8.5h（8:00出发）</span><span class="hotel">🏨 住烟台</span><span>📅 8月2日</span></div>
+        <ul class="timeline">
+          <li><div class="time-slot">7:30</div><div class="event camp-event"><h4>🌅 服务区醒来</h4><p>不急，慢慢来。服务区卫生间洗漱，自带早餐。</p></div></li>
+          <li><div class="time-slot drive-slot">8:00</div><div class="event drive-event"><h4>🚗 出发！</h4><p>剩余约647km，傍晚抵达<a class="nav" href="https://uri.amap.com/navigation?to=121.447755,37.464551,烟台莱山区&mode=car&callnative=1">烟台莱山区</a>。</p></div></li>
+          <li><div class="time-slot drive-slot">10:30</div><div class="event drive-event"><h4>🛑 <a class="nav" href="https://uri.amap.com/search?keyword=济南服务区&callnative=1">济南附近服务区</a></h4><p>休息15分钟，活动筋骨。</p></div></li>
+          <li><div class="time-slot">12:00</div><div class="event"><h4>🍜 <a class="nav" href="https://uri.amap.com/search?keyword=潍坊小吃&callnative=1">潍坊附近</a>下高速午餐</h4><p>找个便宜小馆子，3人≈30元。<span class="tag eat">午餐</span></p></div></li>
+          <li><div class="time-slot drive-slot">13:00</div><div class="event drive-event"><h4>🚗 最后冲刺（娃午睡）</h4><p>约2.5小时到烟台，娃车上自然午睡。</p></div></li>
+          <li>
+            <div class="time-slot">16:30</div>
+            <div class="event"><h4>🎉 抵达烟台！</h4><p>入住 <a class="nav" href="https://uri.amap.com/navigation?to=121.358117,37.469745,新成宾馆黄务店&mode=car&callnative=1">新成宾馆(黄务店)</a> ≈120元/晚，连住4晚。<span class="tag stay">住宿</span></p></div>
           </li>
           <li>
-            <div class="time-slot">20:30</div>
-            <div class="event sleep-event">
-              <h4>😴 酒店睡觉</h4>
-              <p>好好洗个热水澡，躺平！</p>
-            </div>
+            <div class="time-slot">17:30</div>
+            <div class="event"><h4>🌊 <a class="nav" href="https://uri.amap.com/navigation?to=121.474510,37.468595,趣浪国际沙滩公园&mode=car&callnative=1">趣浪国际沙滩公园</a></h4><p>免费！2天开车终于见到大海——娃光脚踩水那一刻，值了。<span class="tag play">沙滩</span></p></div>
           </li>
+          <li><div class="time-slot">19:00</div><div class="event"><h4>🍜 晚餐：<a class="nav" href="https://uri.amap.com/navigation?to=121.453078,37.467136,福祚黑猪肉馄饨&mode=car&callnative=1">福祚黑猪肉馄饨</a></h4><p>3人≈30元，清淡鲜美。<span class="tag eat">晚餐</span></p></div></li>
+          <li><div class="time-slot">21:00</div><div class="event sleep-event"><h4>😴 酒店睡觉</h4><p>好好洗个热水澡！</p></div></li>
         </ul>
         <div class="day-cost road">💰 本日：油费≈210 + 过路费≈270 + 住宿≈120 + 餐饮≈60 = ≈660元</div>
       </div>
 
       <!-- Day 3 -->
       <div class="day-card">
-        <div class="day-header">
-          <div class="day-num beach">3</div>
-          <h2>烟台 · 🏖️ 沙滩纯玩日</h2>
-        </div>
-        <div class="day-meta">
-          <span class="hotel">🏨 住烟台</span>
-          <span>🚗 市区短途 0-10km</span>
-          <span>📅 8月3日</span>
-        </div>
+        <div class="day-header"><div class="day-num beach">3</div><h2>烟台 · 🏖️ 沙滩纯玩日</h2></div>
+        <div class="day-meta"><span class="hotel">🏨 住烟台</span><span>🚗 市区短途 0-10km</span><span>📅 8月3日</span></div>
         <ul class="timeline">
-          <li>
-            <div class="time-slot">8:30</div>
-            <div class="event sleep-event">
-              <h4>😴 自然醒！不设闹钟</h4>
-              <p>昨天开了一天车，睡到几点算几点。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">9:00</div>
-            <div class="event">
-              <h4>🥟 连合兴灌浆包</h4>
-              <p>3人≈25元，烟台老字号。<span class="tag eat">早餐</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">9:30</div>
-            <div class="event">
-              <h4>🏖️ 趣浪国际沙滩公园 上午场</h4>
-              <p>挖沙、踩浪、捡贝壳——5岁娃的终极快乐。大人铺垫子坐着看海。<span class="tag play">沙滩</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">12:00</div>
-            <div class="event">
-              <h4>🍔 午餐</h4>
-              <p>自带三明治/饼干+水果，省时省钱。<span class="tag eat">自带午餐</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">12:30</div>
-            <div class="event sleep-event">
-              <h4>😴 酒店午睡（必须！）</h4>
-              <p>5岁娃不午睡下午就崩。酒店踏实睡1.5h。<span class="tag tip">必须午睡</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">15:00</div>
-            <div class="event">
-              <h4>🪁 烟台体育公园</h4>
-              <p>大草坪放风筝、儿童游乐区滑梯秋千。<span class="tag play">亲子</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">17:30</div>
-            <div class="event">
-              <h4>🌅 黄海明珠 · 日落灯塔</h4>
-              <p>免费，拍照绝美。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">18:30</div>
-            <div class="event">
-              <h4>🍲 洪兴砂锅菜</h4>
-              <p>3人≈55元，一份砂锅鲶鱼+一份排骨，米饭管够。<span class="tag eat">晚餐</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">20:00</div>
-            <div class="event">
-              <h4>🌃 五彩广场喷泉秀</h4>
-              <p>娃追水柱跑，开心的一天。</p>
-            </div>
-          </li>
+          <li><div class="time-slot">8:30</div><div class="event sleep-event"><h4>😴 自然醒！</h4><p>不设闹钟，睡到几点算几点。</p></div></li>
+          <li><div class="time-slot">9:00</div><div class="event"><h4>🥟 <a class="nav" href="https://uri.amap.com/navigation?to=121.449726,37.467484,连合兴灌浆包&mode=car&callnative=1">连合兴灌浆包</a></h4><p>3人≈25元，烟台老字号。<span class="tag eat">早餐</span></p></div></li>
+          <li><div class="time-slot">9:30</div><div class="event"><h4>🏖️ <a class="nav" href="https://uri.amap.com/navigation?to=121.474510,37.468595,趣浪国际沙滩公园&mode=car&callnative=1">趣浪国际沙滩公园</a> 上午场</h4><p>挖沙、踩浪、捡贝壳——5岁娃的终极快乐。<span class="tag play">沙滩</span></p></div></li>
+          <li><div class="time-slot">12:00</div><div class="event"><h4>🍔 午餐</h4><p>自带三明治/饼干+水果。<span class="tag eat">自带午餐</span></p></div></li>
+          <li><div class="time-slot">12:30</div><div class="event sleep-event"><h4>😴 酒店午睡（必须！）</h4><p>5岁娃不午睡下午就崩。<span class="tag tip">必须午睡</span></p></div></li>
+          <li><div class="time-slot">15:00</div><div class="event"><h4>🪁 <a class="nav" href="https://uri.amap.com/navigation?to=121.461524,37.465558,烟台体育公园&mode=car&callnative=1">烟台体育公园</a></h4><p>大草坪放风筝、儿童游乐区滑梯秋千。<span class="tag play">亲子</span></p></div></li>
+          <li><div class="time-slot">17:30</div><div class="event"><h4>🌅 <a class="nav" href="https://uri.amap.com/navigation?to=121.454698,37.491623,黄海明珠&mode=car&callnative=1">黄海明珠</a> · 日落灯塔</h4><p>免费，拍照绝美。</p></div></li>
+          <li><div class="time-slot">18:30</div><div class="event"><h4>🍲 <a class="nav" href="https://uri.amap.com/navigation?to=121.447373,37.468994,洪兴砂锅菜&mode=car&callnative=1">洪兴砂锅菜</a></h4><p>3人≈55元，砂锅鲶鱼+砂锅排骨。<span class="tag eat">晚餐</span></p></div></li>
+          <li><div class="time-slot">20:00</div><div class="event"><h4>🌃 <a class="nav" href="https://uri.amap.com/navigation?to=121.446991,37.457757,烟台五彩文化广场&mode=car&callnative=1">五彩广场</a>喷泉秀</h4><p>娃追水柱跑，开心的一天。</p></div></li>
         </ul>
         <div class="day-cost beach">💰 本日：住宿≈120 + 餐饮≈80 + 其他≈20 = ≈220元</div>
       </div>
 
       <!-- Day 4 -->
       <div class="day-card">
-        <div class="day-header">
-          <div class="day-num ocean">4</div>
-          <h2>烟台 · 🐳 海洋馆终极日</h2>
-        </div>
-        <div class="day-meta">
-          <span class="hotel">🏨 住烟台</span>
-          <span>🚗 ≈10km</span>
-          <span>📅 8月4日</span>
-        </div>
+        <div class="day-header"><div class="day-num ocean">4</div><h2>烟台 · 🐳 海洋馆终极日</h2></div>
+        <div class="day-meta"><span class="hotel">🏨 住烟台</span><span>🚗 ≈10km</span><span>📅 8月4日</span></div>
         <ul class="timeline">
-          <li>
-            <div class="time-slot">7:30</div>
-            <div class="event">
-              <h4>🥟 自带早餐</h4>
-              <p>面包+牛奶+煮鸡蛋（酒店烧水壶煮），≈5元。</p>
-            </div>
-          </li>
+          <li><div class="time-slot">7:30</div><div class="event"><h4>🥟 自带早餐</h4><p>面包+牛奶+煮鸡蛋，≈5元。</p></div></li>
           <li>
             <div class="time-slot">8:30</div>
-            <div class="event">
-              <h4>🐋 烟台海昌鲸鲨海洋公园 ⭐最佳！</h4>
-              <p>鲸鲨、海豚表演、企鹅、水母…门票≈150元/成人，儿童≈75元。<span class="tag play">海洋馆</span><span class="tag tip">提前美团买票</span></p>
-            </div>
+            <div class="event"><h4>🐋 <a class="nav" href="https://uri.amap.com/navigation?to=121.451900,37.519228,烟台海昌鲸鲨海洋公园&mode=car&callnative=1">烟台海昌鲸鲨海洋公园</a> ⭐最佳！</h4><p>鲸鲨、海豚表演、企鹅、水母…门票≈150元/成人，儿童≈75元。<span class="tag play">海洋馆</span><span class="tag tip">提前美团买票</span></p></div>
           </li>
-          <li>
-            <div class="time-slot">12:00</div>
-            <div class="event">
-              <h4>🍜 自带午餐或园内简餐</h4>
-              <p>自带三明治+水果≈15元。<span class="tag eat">午餐</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">12:30</div>
-            <div class="event">
-              <h4>🏛️ 渔人码头 · 喂海鸥！</h4>
-              <p>带面包喂海鸥，娃超开心！免费。<span class="tag play">喂海鸥</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">14:00</div>
-            <div class="event sleep-event">
-              <h4>😴 回酒店午睡</h4>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">16:00</div>
-            <div class="event">
-              <h4>🌙 月亮湾</h4>
-              <p>沙滩细腻，捡贝壳、踩水。免费。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">18:00</div>
-            <div class="event">
-              <h4>🦐 小海滩海鲜烧烤大排档</h4>
-              <p>3人≈80元，烤大虾+烤生蚝+烤馒头（娃吃不辣的）。<span class="tag eat">海鲜大餐</span></p>
-            </div>
-          </li>
+          <li><div class="time-slot">12:00</div><div class="event"><h4>🍜 自带午餐或园内简餐</h4><p>自带三明治+水果≈15元。<span class="tag eat">午餐</span></p></div></li>
+          <li><div class="time-slot">12:30</div><div class="event"><h4>🏛️ <a class="nav" href="https://uri.amap.com/navigation?to=121.452367,37.519283,烟台海昌渔人码头&mode=car&callnative=1">渔人码头</a> · 喂海鸥！</h4><p>带面包喂海鸥，娃超开心！免费。<span class="tag play">喂海鸥</span></p></div></li>
+          <li><div class="time-slot">14:00</div><div class="event sleep-event"><h4>😴 回酒店午睡</h4></div></li>
+          <li><div class="time-slot">16:00</div><div class="event"><h4>🌙 <a class="nav" href="https://uri.amap.com/navigation?to=121.432033,37.534699,月亮湾&mode=car&callnative=1">月亮湾</a></h4><p>沙滩细腻，捡贝壳、踩水。免费。</p></div></li>
+          <li><div class="time-slot">18:00</div><div class="event"><h4>🦐 <a class="nav" href="https://uri.amap.com/navigation?to=121.440511,37.462904,小海滩海鲜烧烤大排档莱山店&mode=car&callnative=1">小海滩海鲜烧烤大排档</a></h4><p>3人≈80元，烤大虾+烤生蚝+烤馒头。<span class="tag eat">海鲜大餐</span></p></div></li>
         </ul>
         <div class="day-cost beach">💰 本日：门票≈375 + 住宿≈120 + 餐饮≈100 = ≈595元</div>
       </div>
 
       <!-- Day 5 -->
       <div class="day-card">
-        <div class="day-header">
-          <div class="day-num island">5</div>
-          <h2>烟台 · 🏝️ 养马岛高光日</h2>
-        </div>
-        <div class="day-meta">
-          <span class="hotel">🏨 住烟台（最后一晚）</span>
-          <span>🚗 ≈30km往返</span>
-          <span>📅 8月5日</span>
-        </div>
+        <div class="day-header"><div class="day-num island">5</div><h2>烟台 · 🏝️ 养马岛高光日</h2></div>
+        <div class="day-meta"><span class="hotel">🏨 住烟台（最后一晚）</span><span>🚗 ≈30km往返</span><span>📅 8月5日</span></div>
         <ul class="timeline">
-          <li>
-            <div class="time-slot">7:30</div>
-            <div class="event">
-              <h4>🥟 自带早餐</h4>
-              <p>≈5元，吃饱出发。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">7:30</div>
-            <div class="event drive-event">
-              <h4>🚗 →养马岛 ≈30分钟</h4>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">8:00</div>
-            <div class="event">
-              <h4>🚲 三人亲子自行车环岛！</h4>
-              <p>≈80元/辆，环岛路平缓，海风舒服。<span class="tag play">骑行</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">10:00</div>
-            <div class="event">
-              <h4>🦀 赶海！！</h4>
-              <p>退潮后礁石区抓小螃蟹、捡海星！娃能玩1小时不腻。<span class="tag play">赶海</span><span class="tag tip">带小桶+铲子</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">11:30</div>
-            <div class="event">
-              <h4>🦞 岛上渔家乐午餐</h4>
-              <p>海鲜面+炒蛤蜊，3人≈50元。<span class="tag eat">海鲜</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">12:30</div>
-            <div class="event camp-event">
-              <h4>😴 车上/树荫午睡</h4>
-              <p>宋Pro后排空调给力，开一会儿EV模式降温，舒舒服服午睡。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">14:00</div>
-            <div class="event">
-              <h4>🏖️ 岛上沙滩再玩</h4>
-              <p>养马岛的水比市区更清。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">16:30</div>
-            <div class="event drive-event">
-              <h4>🚗 返回莱山区</h4>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">17:30</div>
-            <div class="event">
-              <h4>🍲 罗氏铁锅炖鱼</h4>
-              <p>3人≈65元，大鱼贴饼子。<span class="tag eat">晚餐</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">19:00</div>
-            <div class="event">
-              <h4>🛍️ 采购+加油</h4>
-              <p>永旺超市买明天路上干粮+烟台苹果特产。加满油准备返程。<span class="tag tip">准备返程</span></p>
-            </div>
-          </li>
+          <li><div class="time-slot">7:30</div><div class="event"><h4>🥟 自带早餐</h4><p>≈5元，吃饱出发。</p></div></li>
+          <li><div class="time-slot drive-slot">8:00</div><div class="event drive-event"><h4>🚗 →<a class="nav" href="https://uri.amap.com/navigation?to=121.611090,37.453552,养马岛&mode=car&callnative=1">养马岛</a> ≈30分钟</h4></div></li>
+          <li><div class="time-slot">8:30</div><div class="event"><h4>🚲 环岛骑行！</h4><p>三人亲子自行车≈80元，环岛路平缓，海风舒服。<span class="tag play">骑行</span></p></div></li>
+          <li><div class="time-slot">10:00</div><div class="event"><h4>🦀 <a class="nav" href="https://uri.amap.com/navigation?to=121.611090,37.453552,养马岛后海赶海&mode=car&callnative=1">赶海！！</a></h4><p>退潮后礁石区抓小螃蟹、捡海星！娃能玩1小时不腻。<span class="tag play">赶海</span><span class="tag tip">带小桶+铲子</span></p></div></li>
+          <li><div class="time-slot">11:30</div><div class="event"><h4>🦞 <a class="nav" href="https://uri.amap.com/search?keyword=养马岛渔家乐&callnative=1">岛上渔家乐</a>午餐</h4><p>海鲜面+炒蛤蜊，3人≈50元。<span class="tag eat">海鲜</span></p></div></li>
+          <li><div class="time-slot">12:30</div><div class="event camp-event"><h4>😴 车上/树荫午睡</h4><p>宋Pro后排空调给力，EV模式降温，舒舒服服午睡。</p></div></li>
+          <li><div class="time-slot">14:00</div><div class="event"><h4>🏖️ 岛上沙滩再玩</h4><p>养马岛的水比市区更清。</p></div></li>
+          <li><div class="time-slot drive-slot">16:30</div><div class="event drive-event"><h4>🚗 返回莱山区</h4></div></li>
+          <li><div class="time-slot">17:30</div><div class="event"><h4>🍲 <a class="nav" href="https://uri.amap.com/navigation?to=121.441086,37.463068,罗氏铁锅炖鱼&mode=car&callnative=1">罗氏铁锅炖鱼</a></h4><p>3人≈65元，大鱼贴饼子。<span class="tag eat">晚餐</span></p></div></li>
+          <li><div class="time-slot">19:00</div><div class="event"><h4>🛍️ <a class="nav" href="https://uri.amap.com/navigation?to=121.447675,37.468988,永旺烟台购物中心&mode=car&callnative=1">永旺超市</a>采购+加油</h4><p>买明天路上干粮+烟台苹果特产。加满油准备返程。<span class="tag tip">准备返程</span></p></div></li>
         </ul>
         <div class="day-cost beach">💰 本日：租车≈80 + 住宿≈120 + 餐饮≈120 + 加油≈180 = ≈500元</div>
       </div>
 
       <!-- Day 6 -->
       <div class="day-card">
-        <div class="day-header">
-          <div class="day-num road">6</div>
-          <h2>烟台 → 菏泽服务区 · ⚡返程硬仗</h2>
-        </div>
-        <div class="day-meta">
-          <span class="drive">🚗 驾驶 ≈750km / 10h（含休息，8:00出发）</span>
-          <span class="camp">🏕️ 车上露营</span>
-          <span>📅 8月6日</span>
-        </div>
+        <div class="day-header"><div class="day-num road">6</div><h2>烟台 → 菏泽服务区 · 返程硬仗</h2></div>
+        <div class="day-meta"><span class="drive">🚗 ≈750km / 10h（8:00出发）</span><span class="camp">🏕️ 车上露营</span><span>📅 8月6日</span></div>
         <ul class="timeline">
-          <li>
-            <div class="time-slot drive-slot">8:00</div>
-            <div class="event drive-event">
-              <h4>🚗 退房，出发！</h4>
-              <p>睡好吃饱再走，不用赶。满油出发。<span class="tag tip">轻松返程</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">10:30</div>
-            <div class="event drive-event">
-              <h4>🛑 潍坊服务区</h4>
-              <p>自带早餐/零食，活动15分钟。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">12:30</div>
-            <div class="event drive-event">
-              <h4>🛑 济南服务区</h4>
-              <p>休息，跑跳。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">13:30</div>
-            <div class="event">
-              <h4>🍜 菏泽附近下高速午餐</h4>
-              <p>便宜小馆，3人≈30元。<span class="tag eat">午餐</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">14:30</div>
-            <div class="event drive-event">
-              <h4>🚗 下午驾驶（娃午睡）</h4>
-              <p>吃饱犯困，娃正好车上睡觉。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">18:00</div>
-            <div class="event camp-event">
-              <h4>🏕️ 到达露营服务区（菏泽/开封附近）</h4>
-              <p>跟Day1一样，后排放倒铺床垫，服务区过夜。<span class="tag camp">车上露营</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">19:00</div>
-            <div class="event">
-              <h4>🍜 服务区晚餐</h4>
-              <p>自带泡面或服务区简餐，人均≈10元。饭后散步。<span class="tag eat">晚餐</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">21:00</div>
-            <div class="event camp-event">
-              <h4>😴 车上睡觉</h4>
-              <p>EV模式空调过夜，跟Day1一样舒适。</p>
-            </div>
-          </li>
+          <li><div class="time-slot drive-slot">8:00</div><div class="event drive-event"><h4>🚗 退房，出发！</h4><p>睡好吃饱再走，不用赶。满油出发。<span class="tag tip">轻松返程</span></p></div></li>
+          <li><div class="time-slot drive-slot">10:30</div><div class="event drive-event"><h4>🛑 <a class="nav" href="https://uri.amap.com/search?keyword=潍坊服务区&callnative=1">潍坊服务区</a></h4><p>自带零食，活动15分钟。</p></div></li>
+          <li><div class="time-slot drive-slot">12:30</div><div class="event drive-event"><h4>🛑 <a class="nav" href="https://uri.amap.com/search?keyword=济南服务区&callnative=1">济南服务区</a></h4><p>休息，跑跳。</p></div></li>
+          <li><div class="time-slot">13:30</div><div class="event"><h4>🍜 <a class="nav" href="https://uri.amap.com/search?keyword=菏泽小吃&callnative=1">菏泽附近</a>下高速午餐</h4><p>便宜小馆，3人≈30元。<span class="tag eat">午餐</span></p></div></li>
+          <li><div class="time-slot drive-slot">14:30</div><div class="event drive-event"><h4>🚗 下午驾驶（娃午睡）</h4><p>吃饱犯困，娃正好车上睡觉。</p></div></li>
+          <li><div class="time-slot">18:00</div><div class="event camp-event"><h4>🏕️ 到达露营服务区（<a class="nav" href="https://uri.amap.com/search?keyword=菏泽服务区&callnative=1">菏泽/开封附近</a>）</h4><p>后排放倒铺床垫，服务区过夜。<span class="tag camp">车上露营</span></p></div></li>
+          <li><div class="time-slot">19:00</div><div class="event"><h4>🍜 服务区晚餐</h4><p>自带泡面或简餐，人均≈10元。饭后散步。<span class="tag eat">晚餐</span></p></div></li>
+          <li><div class="time-slot">21:00</div><div class="event camp-event"><h4>😴 车上睡觉</h4><p>EV模式空调过夜，跟Day1一样舒适。</p></div></li>
         </ul>
         <div class="day-cost road">💰 本日：油费≈240 + 过路费≈300 + 餐饮≈50 + 住宿0元 = ≈590元</div>
       </div>
 
       <!-- Day 7 -->
       <div class="day-card">
-        <div class="day-header">
-          <div class="day-num home">7</div>
-          <h2>菏泽 → 西安 · 🏠 凯旋归来</h2>
-        </div>
-        <div class="day-meta">
-          <span class="drive">🚗 驾驶 ≈647km / 8h（含休息，8:00出发）</span>
-          <span>📅 8月7日</span>
-        </div>
+        <div class="day-header"><div class="day-num home">7</div><h2>菏泽 → 西安 · 🏠 凯旋归来</h2></div>
+        <div class="day-meta"><span class="drive">🚗 ≈647km / 8h（8:00出发）</span><span>📅 8月7日</span></div>
         <ul class="timeline">
-          <li>
-            <div class="time-slot">7:30</div>
-            <div class="event camp-event">
-              <h4>🌅 服务区醒来</h4>
-              <p>洗漱+自带早餐≈5元。最后一天，不慌不忙。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">8:00</div>
-            <div class="event drive-event">
-              <h4>🚗 出发！最后647km 回家</h4>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">9:30</div>
-            <div class="event drive-event">
-              <h4>🛑 郑州附近服务区</h4>
-              <p>休息，活动。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">12:00</div>
-            <div class="event">
-              <h4>🍜 洛阳附近午餐</h4>
-              <p>最后一顿路上饭，3人≈30元。<span class="tag eat">午餐</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot drive-slot">13:00</div>
-            <div class="event drive-event">
-              <h4>🚗 最后一段（娃午睡）</h4>
-              <p>午饭后娃自然入睡，一路顺畅。</p>
-            </div>
-          </li>
-          <li>
-            <div class="time-slot">16:00</div>
-            <div class="event">
-              <h4>🎉🏠 到家！！</h4>
-              <p>安全到家！一家三口第一次长途自驾+露营，了不起的旅程！</p>
-            </div>
-          </li>
+          <li><div class="time-slot">7:30</div><div class="event camp-event"><h4>🌅 服务区醒来</h4><p>洗漱+自带早餐≈5元。最后一天，不慌不忙。</p></div></li>
+          <li><div class="time-slot drive-slot">8:00</div><div class="event drive-event"><h4>🚗 出发！最后647km 回家</h4></div></li>
+          <li><div class="time-slot drive-slot">10:00</div><div class="event drive-event"><h4>🛑 <a class="nav" href="https://uri.amap.com/search?keyword=郑州服务区&callnative=1">郑州附近服务区</a></h4><p>休息，活动。</p></div></li>
+          <li><div class="time-slot">12:00</div><div class="event"><h4>🍜 <a class="nav" href="https://uri.amap.com/search?keyword=洛阳小吃&callnative=1">洛阳附近</a>午餐</h4><p>最后一顿路上饭，3人≈30元。<span class="tag eat">午餐</span></p></div></li>
+          <li><div class="time-slot drive-slot">13:00</div><div class="event drive-event"><h4>🚗 最后一段（娃午睡）</h4><p>午饭后娃自然入睡，一路顺畅。</p></div></li>
+          <li><div class="time-slot">16:00</div><div class="event"><h4>🎉🏠 到家！！</h4><p>安全到家！一家三口第一次长途自驾+露营，了不起的旅程！</p></div></li>
         </ul>
         <div class="day-cost road">💰 本日：油费≈210 + 过路费≈270 + 餐饮≈35 = ≈515元</div>
       </div>
@@ -784,19 +304,21 @@
 
     <!-- Sidebar -->
     <aside>
-      <!-- 车辆信息 -->
+      <div class="nav-tip">
+        <strong>🧭 手机端使用说明：</strong><br>
+        点击行程中任何 <strong style="color:#e65100;">橙色下划线地名</strong> → 自动跳转高德地图 → 开始导航！<br>
+        📱 需安装<strong>高德地图App</strong>
+      </div>
+
       <div class="car-box">
         <strong>🚗 比亚迪宋Pro DM-i 115km</strong><br>
         油耗：高速HEV ≈<strong>5.5L/100km</strong><br>
         油箱：≈52L（加满≈400元）<br>
         纯电续航：≈115km（NEDC）<br>
         ⚡ 露营空调：EV模式一整晚≈耗电30-40%<br>
-        总里程：≈2,800km<br>
-        总油耗：≈154L（≈1,200元）<br>
-        中途充电：服务区可补电≈30元
+        总里程：≈2,800km · 总油耗：≈154L（≈1,200元）
       </div>
 
-      <!-- 总预算 -->
       <div class="panel">
         <h3>💰 总预算精算</h3>
         <table class="budget-table">
@@ -810,19 +332,16 @@
           <tr><td>🛍️ 零食/特产/杂项</td><td>≈200</td></tr>
           <tr class="total"><td>🔴 总计</td><td>≈4,205元</td></tr>
         </table>
-        <p style="font-size:12px;color:var(--muted);margin-top:6px;">人均≈1,400元 | 对比住酒店方案省了≈1,900元</p>
+        <p style="font-size:12px;color:var(--muted);margin-top:6px;">人均≈1,400元</p>
       </div>
 
-      <!-- 露营指南 -->
       <div class="camp-box">
         <strong>🏕️ 宋Pro车上露营指南</strong><br>
         ✓ 后排放倒≈1.8m×1.1m，两大一小刚好<br>
         ✓ 必带：自充气床垫+薄被+枕头×3<br>
         ✓ 车窗遮阳挡（隐私+遮光）<br>
         ✓ 115km电池带空调过夜无压力<br>
-        ✓ 服务区选大型的，有24h卫生间+热水<br>
-        ✓ 睡前外循环通风，车窗留1cm缝<br>
-        ✗ 不要在偏僻路边过夜
+        ✓ 选大型服务区，有24h卫生间+热水
       </div>
 
       <div class="panel">
@@ -832,7 +351,6 @@
           <li><strong>早餐≈5元：</strong>自带面包+牛奶</li>
           <li><strong>午餐≈10元/人：</strong>自带或路边面馆</li>
           <li><strong>晚餐≈15元/人：</strong>小馆子或服务区</li>
-          <li>烟台必吃：馄饨27元、灌浆包23元、砂锅菜51元（偶尔犒劳）</li>
         </ul>
       </div>
 
@@ -842,8 +360,7 @@
           <li>烟台 ≈23-31℃，早晚凉</li>
           <li>可能有雨，带雨具+儿童雨衣</li>
           <li>防晒霜+遮阳帽+墨镜必带</li>
-          <li>沙滩拖鞋+运动鞋</li>
-          <li>娃至少2套换洗衣服</li>
+          <li>沙滩拖鞋+运动鞋 · 娃2套换洗</li>
         </ul>
       </div>
 
@@ -862,24 +379,10 @@
         <h3>⚠️ 重要提醒</h3>
         <ul>
           <li>安全座椅全程使用！</li>
-          <li>每1.5-2h服务区休息，杜绝疲劳驾驶</li>
-          <li>海边只在安全区玩水，时刻看娃</li>
+          <li>每1.5-2h服务区休息</li>
+          <li>海边只在安全区玩水</li>
           <li>8月旺季提前订酒店和门票</li>
           <li>出发前检查胎压、机油、冷却液</li>
-          <li>下载离线地图（山区可能没信号）</li>
-        </ul>
-      </div>
-
-      <div class="panel">
-        <h3>📍 烟台核心景点</h3>
-        <ul>
-          <li>🏖️ 趣浪国际沙滩公园 — 免费·24h</li>
-          <li>🐳 鲸鲨海洋公园 — ≈150元/成人</li>
-          <li>🏛️ 渔人码头 — 免费·喂海鸥</li>
-          <li>🏝️ 养马岛 — 免费（租车80）</li>
-          <li>🌙 月亮湾 — 免费</li>
-          <li>🌅 黄海明珠 — 免费</li>
-          <li>🪁 烟台体育公园 — 免费</li>
         </ul>
       </div>
     </aside>
