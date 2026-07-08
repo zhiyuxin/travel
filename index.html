@@ -307,8 +307,8 @@
     <aside>
       <div class="nav-tip">
         <strong>🧭 手机端使用说明：</strong><br>
-        点击行程中任何 <strong style="color:#e65100;">橙色下划线地名</strong> → 自动唤起<strong>高德地图App</strong>开始导航<br>
-        📱 使用了 <code style="background:#ffe0b2;padding:1px 4px;border-radius:3px;">callnative=1</code> 参数，已装App直接打开，没装跳网页版
+        点击<strong style="color:#e65100;">橙色下划线地点</strong> → 打开高德地图路线规划<br>
+        已安装高德App自动唤起，未安装自动使用网页版地图
       </div>
 
       <div class="panel">
@@ -413,37 +413,15 @@
     </aside>
   </main>
   <script>
-    // 智能唤起高德地图：先尝试App，1.5秒无反应降级到网页版
+    // 高德官方URI API：自动判断设备/已装App/微信环境，最稳定方案
     function goMap(lat, lon, name) {
-      var ua = navigator.userAgent.toLowerCase();
-      var appUrl;
-      if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
-        appUrl = 'iosamap://path?sourceApplication=旅游攻略&dlat=' + lat + '&dlon=' + lon + '&dname=' + encodeURIComponent(name);
-      } else {
-        appUrl = 'androidamap://route?sourceApplication=旅游攻略&dlat=' + lat + '&dlon=' + lon + '&dname=' + encodeURIComponent(name) + '&dev=0&t=0';
-      }
-      var webUrl = 'https://uri.amap.com/navigation?to=' + lon + ',' + lat + ',' + encodeURIComponent(name) + '&mode=car&callnative=1';
-      var clicked = Date.now();
-      window.location.href = appUrl;
-      setTimeout(function() {
-        if (Date.now() - clicked > 1400) { window.location.href = webUrl; }
-      }, 1500);
+      var url = 'https://uri.amap.com/navigation?to=' + lon + ',' + lat + ',' + encodeURIComponent(name) + '&mode=car&callnative=1';
+      window.location.href = url;
       return false;
     }
     function goSearch(keyword) {
-      var ua = navigator.userAgent.toLowerCase();
-      var appUrl;
-      if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
-        appUrl = 'iosamap://search?keyword=' + encodeURIComponent(keyword) + '&sourceApplication=旅游攻略';
-      } else {
-        appUrl = 'androidamap://search?keyword=' + encodeURIComponent(keyword) + '&sourceApplication=旅游攻略';
-      }
-      var webUrl = 'https://uri.amap.com/search?keyword=' + encodeURIComponent(keyword) + '&callnative=1';
-      var clicked = Date.now();
-      window.location.href = appUrl;
-      setTimeout(function() {
-        if (Date.now() - clicked > 1400) { window.location.href = webUrl; }
-      }, 1500);
+      var url = 'https://uri.amap.com/search?keyword=' + encodeURIComponent(keyword) + '&callnative=1';
+      window.location.href = url;
       return false;
     }
   </script>
