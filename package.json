@@ -1,0 +1,19 @@
+{
+  "name": "travel-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Amap + DeepSeek travel planning MCP server.",
+  "scripts": {
+    "start": "node src/server.js",
+    "inspect": "npx @modelcontextprotocol/inspector node src/server.js",
+    "test:smoke": "node scripts/smoke-test.js",
+    "test:mcp": "node scripts/mcp-smoke.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.5",
+    "dotenv": "^17.2.1",
+    "puppeteer-core": "^25.3.0",
+    "zod": "^3.25.76"
+  }
+}
