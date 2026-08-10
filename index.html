@@ -7,7 +7,7 @@
 <style>
 :root{--ink:#1e293b;--m2:#475569;--m3:#94a3b8;--bg:#f1f5f9;--card:#fff;--blue:#2563eb;--ocean:#0891b2;--coral:#ef4444;--leaf:#16a34a;--road:#b45309;--camp:#7c3aed;--nav:#ea580c;--r:12px}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg);font-size:15px;line-height:1.6;padding-bottom:80px;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg);font-size:15px;line-height:1.6;padding-bottom:100px;-webkit-tap-highlight-color:transparent}
 
 /* 头部 */
 header{background:linear-gradient(160deg,#0c4a6e 0%,#0369a1 40%,#0891b2 80%);color:#fff;padding:28px 20px 24px;position:relative;overflow:hidden}
@@ -68,10 +68,26 @@ a.nav:active{background-size:100% 2px}a.nav::after{content:" 🧭";font-size:9px
 .panel .ttl td{border-top:2px solid var(--ink);font-size:16px;color:var(--coral);padding-top:8px;font-weight:800}
 select{font-size:12px;padding:6px 28px 6px 10px;border-radius:8px;border:1.5px solid #d1d5db;background:#f9fafb;appearance:none;-webkit-appearance:none;min-height:34px;font-weight:600;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23666'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}
 
-/* 底部导航 */
-.bnav{position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-top:1px solid #e5e7eb;display:flex;overflow-x:auto;padding:6px 4px env(safe-area-inset-bottom,8px);gap:2px;-webkit-overflow-scrolling:touch}
-.bnav a{flex-shrink:0;padding:7px 12px;font-size:11px;font-weight:700;color:var(--m3);text-decoration:none;border-radius:10px;transition:.2s;white-space:nowrap}
-.bnav a:active{background:#eff6ff;color:var(--blue)}
+/* 底部导航 — 悬浮药丸 */
+.bnav{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:99;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-radius:28px;padding:5px 6px;display:flex;gap:3px;overflow-x:auto;
+  box-shadow:0 6px 28px rgba(0,0,0,.12),0 1px 3px rgba(0,0,0,.05),inset 0 1px 0 rgba(255,255,255,.6);
+  border:1px solid rgba(255,255,255,.5);max-width:calc(100vw - 20px);
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.bnav::-webkit-scrollbar{display:none}
+.bnav a{
+  flex-shrink:0;padding:8px 13px;font-size:12px;font-weight:700;color:#64748b;
+  text-decoration:none;border-radius:22px;transition:.25s cubic-bezier(.4,0,.2,1);
+  white-space:nowrap;display:flex;align-items:center;gap:5px;letter-spacing:.2px;
+  position:relative;
+}
+.bnav a.on{
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;
+  box-shadow:0 3px 14px rgba(37,99,235,.35);
+}
 
 /* 特殊框 */
 .car-box{background:linear-gradient(135deg,#1e293b,#334155);color:#e2e8f0;border-radius:10px;padding:14px;font-size:12px;line-height:1.7}
@@ -89,7 +105,7 @@ select{font-size:12px;padding:6px 28px 6px 10px;border-radius:8px;border:1.5px s
 </head>
 <body>
 
-<header>
+<header id="top">
   <h1>🚗 西安 → 烟台<br>7天亲子自驾游</h1>
   <p>2大1小（5岁娃）· 宋Pro DM-i 115km · 车上露营 · 9月初</p>
   <div class="badges">
@@ -269,7 +285,21 @@ select{font-size:12px;padding:6px 28px 6px 10px;border-radius:8px;border:1.5px s
 
 <script>
 // 回到顶部按钮
-window.addEventListener('scroll',function(){document.getElementById('topBtn').classList.toggle('show',window.scrollY>400)});
+window.addEventListener('scroll',function(){var b=document.getElementById('topBtn');if(b)b.classList.toggle('show',window.scrollY>400);});
+// 底部导航自动高亮
+(function(){
+  var links=document.querySelectorAll('.bnav a'),cards=document.querySelectorAll('.card[id]'),prev='';
+  window.addEventListener('scroll',function(){
+    var h=document.querySelector('header'),top=window.scrollY+(h?h.offsetHeight:0)+20,current='';
+    cards.forEach(function(c){if(c.offsetTop<=top)current=c.id;});
+    if(current===prev)return;prev=current;
+    links.forEach(function(a){
+      var on=a.getAttribute('href')==='#'+current;
+      a.classList.toggle('on',on);
+      if(on)try{a.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'})}catch(e){a.scrollIntoView()};
+    });
+  });
+})();
 // 加载天气
 (function(){
 var WC={0:'☀️晴',1:'🌤️少云',2:'⛅多云',3:'☁️阴',45:'🌫️雾',51:'🌧️小雨',53:'🌧️雨',55:'🌧️大雨',61:'🌧️雨',63:'🌧️雨',65:'🌧️大雨',80:'🌦️阵雨',95:'⛈️雷暴',96:'⛈️雷暴',99:'⛈️强雷暴'};
