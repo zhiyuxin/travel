@@ -7,7 +7,7 @@
 <style>
 :root{--ink:#1e293b;--m2:#475569;--m3:#94a3b8;--bg:#f1f5f9;--card:#fff;--blue:#2563eb;--ocean:#0891b2;--coral:#ef4444;--leaf:#16a34a;--road:#b45309;--camp:#7c3aed;--nav:#ea580c;--r:12px}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg);font-size:15px;line-height:1.6;padding-bottom:100px;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg);font-size:15px;line-height:1.6;padding-bottom:16px;-webkit-tap-highlight-color:transparent}
 
 /* 头部 */
 header{background:linear-gradient(160deg,#0c4a6e 0%,#0369a1 40%,#0891b2 80%);color:#fff;padding:28px 20px 24px;position:relative;overflow:hidden}
@@ -68,25 +68,22 @@ a.nav:active{background-size:100% 2px}a.nav::after{content:" 🧭";font-size:9px
 .panel .ttl td{border-top:2px solid var(--ink);font-size:16px;color:var(--coral);padding-top:8px;font-weight:800}
 select{font-size:12px;padding:6px 28px 6px 10px;border-radius:8px;border:1.5px solid #d1d5db;background:#f9fafb;appearance:none;-webkit-appearance:none;min-height:34px;font-weight:600;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23666'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}
 
-/* 底部导航 — 悬浮药丸 */
+/* 日程导航 — 顶部标签栏 */
 .bnav{
-  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:99;
-  background:rgba(255,255,255,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-radius:28px;padding:5px 6px;display:flex;gap:3px;overflow-x:auto;
-  box-shadow:0 6px 28px rgba(0,0,0,.12),0 1px 3px rgba(0,0,0,.05),inset 0 1px 0 rgba(255,255,255,.6);
-  border:1px solid rgba(255,255,255,.5);max-width:calc(100vw - 20px);
+  position:sticky;top:0;z-index:99;margin:0 -12px;
+  background:linear-gradient(180deg,#fff 60%,rgba(255,255,255,.92));
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid #e5e7eb;padding:8px 12px;display:flex;gap:0;overflow-x:auto;
   -webkit-overflow-scrolling:touch;scrollbar-width:none;
 }
 .bnav::-webkit-scrollbar{display:none}
 .bnav a{
-  flex-shrink:0;padding:8px 13px;font-size:12px;font-weight:700;color:#64748b;
-  text-decoration:none;border-radius:22px;transition:.25s cubic-bezier(.4,0,.2,1);
-  white-space:nowrap;display:flex;align-items:center;gap:5px;letter-spacing:.2px;
-  position:relative;
+  flex-shrink:0;padding:6px 14px;font-size:13px;font-weight:600;color:#94a3b8;
+  text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;
+  transition:.2s;margin:0 1px;
 }
 .bnav a.on{
-  background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;
-  box-shadow:0 3px 14px rgba(37,99,235,.35);
+  color:#2563eb;border-bottom-color:#2563eb;font-weight:700;
 }
 
 /* 特殊框 */
@@ -100,7 +97,7 @@ select{font-size:12px;padding:6px 28px 6px 10px;border-radius:8px;border:1.5px s
 #topBtn:active{transform:scale(.9)}
 
 /* 桌面 */
-@media(min-width:768px){main{max-width:720px;padding:20px 16px 60px}.bnav{display:none}#topBtn{bottom:24px}.card{padding:22px 20px}}
+@media(min-width:768px){main{max-width:720px;padding:20px 16px 60px}#topBtn{bottom:24px}.card{padding:22px 20px}.bnav{position:sticky}}
 </style>
 </head>
 <body>
@@ -113,18 +110,22 @@ select{font-size:12px;padding:6px 28px 6px 10px;border-radius:8px;border:1.5px s
   </div>
 </header>
 
+<nav class="bnav">
+  <a href="#top">📋总览</a><a href="#d1">①去程</a><a href="#d2">②抵达</a><a href="#d3">③沙滩</a><a href="#d4">④海洋</a><a href="#d5">⑤海岛</a><a href="#d6">⑥返程</a><a href="#d7">⑦回家</a><a href="#pack">🎒清单</a><a href="#weather">🌤️</a>
+</nav>
+
 <main>
 
 <!-- 总览 -->
 <div class="card info"><h2><span class="ico">📋</span>行程速览</h2>
-  <div class="sub"><span>Day1🛣️西安→菏泽750km</span><span>Day2🛣️菏泽→烟台647km</span><span>Day3🏖️沙滩</span><span>Day4🐳海洋</span><span>Day5🏝️海岛</span><span>Day6🛣️返程</span><span>Day7🏠回家</span></div>
+  <div class="sub"><span>Day1🛣️西安→菏泽730km</span><span>Day2🛣️菏泽→烟台647km</span><span>Day3🏖️沙滩</span><span>Day4🐳海洋</span><span>Day5🏝️海岛</span><span>Day6🛣️返程</span><span>Day7🏠回家</span></div>
   <p style="font-size:13px;line-height:1.8;"><b>🚗 宋Pro DM-i 115km：</b>高速HEV≈5.5L/100km，满油满电出发。115km电池带空调露营过夜。<br><b>🏕️ 3晚车上露营：</b>菏泽服务区（去程+返程），后排放倒+床垫。<br><b>🍜 餐饮≈100元/天：</b>自带干粮+路边小馆。<br><b>🍂 9月初优势：</b>开学淡季人少、天气凉爽23-27°C、海鲜正肥、停车不愁！早晚温差大记得带外套。<br><b>🧭 点击橙色地名→高德导航</b></p>
 </div>
 
 <!-- 日卡片 -->
 <!-- Day1 -->
 <div class="card drive" id="d1"><h2><span class="ico">①</span>西安 → 菏泽服务区</h2>
-  <div class="sub"><span><b>🚗 750km / 10h</b></span><span>🏕️ 车上露营</span><span>📅 9/1</span></div>
+  <div class="sub"><span><b>🚗 730km / 10h</b></span><span>🏕️ 车上露营</span><span>📅 9/1</span></div>
   <ul class="tl">
     <li><div class="tm go">8:00</div><div class="ev"><h4>🚗 满油满电出发</h4><p>从<a class="nav" href="https://uri.amap.com/navigation?to=108.939645,34.343207,西安&mode=car">西安</a>走G30连霍高速。<span class="tag t">满油满电</span></p></div></li>
     <li><div class="tm stop">10:00</div><div class="ev"><h4>🛑 <a class="nav" href="https://uri.amap.com/search?keyword=华山服务区">华山服务区</a></h4><p>G30·≈120km，休息15分钟。</p></div></li>
@@ -199,7 +200,7 @@ select{font-size:12px;padding:6px 28px 6px 10px;border-radius:8px;border:1.5px s
 
 <!-- Day6 -->
 <div class="card drive" id="d6"><h2><span class="ico">⑥</span>烟台 → 菏泽 · 返程</h2>
-  <div class="sub"><span><b>🚗 750km / 10h</b></span><span>🏕️ 车上露营</span><span>📅 9/6</span></div>
+  <div class="sub"><span><b>🚗 ≈730km / 10h</b></span><span>🏕️ 车上露营</span><span>📅 9/6</span></div>
   <ul class="tl">
     <li><div class="tm go">8:00</div><div class="ev"><h4>🚗 退房出发</h4><p>睡好吃饱再走。<span class="tag t">轻松返程</span></p></div></li>
     <li><div class="tm stop">10:30</div><div class="ev"><h4>🛑 <a class="nav" href="https://uri.amap.com/search?keyword=潍坊服务区">潍坊服务区</a></h4><p>G20·≈250km。</p></div></li>
@@ -276,27 +277,23 @@ select{font-size:12px;padding:6px 28px 6px 10px;border-radius:8px;border:1.5px s
 
 </main>
 
-<!-- 底部导航 -->
-<nav class="bnav">
-  <a href="#top">📋总览</a><a href="#d1">①去程</a><a href="#d2">②抵达</a><a href="#d3">③沙滩</a><a href="#d4">④海洋</a><a href="#d5">⑤海岛</a><a href="#d6">⑥返程</a><a href="#d7">⑦回家</a><a href="#pack">🎒清单</a><a href="#weather">🌤️</a>
-</nav>
-
 <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
 // 回到顶部按钮
 window.addEventListener('scroll',function(){var b=document.getElementById('topBtn');if(b)b.classList.toggle('show',window.scrollY>400);});
-// 底部导航自动高亮
+// 顶部导航自动高亮
 (function(){
   var links=document.querySelectorAll('.bnav a'),cards=document.querySelectorAll('.card[id]'),prev='';
   window.addEventListener('scroll',function(){
     var h=document.querySelector('header'),top=window.scrollY+(h?h.offsetHeight:0)+20,current='';
     cards.forEach(function(c){if(c.offsetTop<=top)current=c.id;});
+    if(!current)current='top';
     if(current===prev)return;prev=current;
     links.forEach(function(a){
       var on=a.getAttribute('href')==='#'+current;
       a.classList.toggle('on',on);
-      if(on)try{a.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'})}catch(e){a.scrollIntoView()};
+      if(on)try{a.scrollIntoView({block:'nearest',inline:'center'})}catch(e){a.scrollIntoView()};
     });
   });
 })();
@@ -305,16 +302,18 @@ window.addEventListener('scroll',function(){var b=document.getElementById('topBt
 var WC={0:'☀️晴',1:'🌤️少云',2:'⛅多云',3:'☁️阴',45:'🌫️雾',51:'🌧️小雨',53:'🌧️雨',55:'🌧️大雨',61:'🌧️雨',63:'🌧️雨',65:'🌧️大雨',80:'🌦️阵雨',95:'⛈️雷暴',96:'⛈️雷暴',99:'⛈️强雷暴'};
 window.loadW=function(){
 var v=document.getElementById('wCity').value.split(','),el=document.getElementById('wOut');
+if(!v||v.length<3){el.innerHTML='⚠️ 参数错误';return;}
 el.innerHTML='⏳ 获取 '+v[2]+' 天气…';
 fetch('https://api.open-meteo.com/v1/forecast?latitude='+v[0]+'&longitude='+v[1]+'&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,apparent_temperature&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code&timezone=Asia/Shanghai&forecast_days=3')
-.then(function(r){return r.json()}).then(function(d){var c=d.current,u=d.daily,h='<b>'+v[2]+'：</b>'+(WC[c.weather_code]||'')+' <b style="font-size:18px;">'+c.temperature_2m+'°C</b>（体感'+c.apparent_temperature+'°C）  💧'+c.relative_humidity_2m+'%  🌬️'+c.wind_speed_10m+'km/h';h+='<table style="margin-top:4px;"><tr style="font-weight:700;"><td>日期</td><td>天气</td><td style="text-align:right;">高/低</td><td style="text-align:right;">🌧️</td></tr>';for(var i=0;i<u.time.length;i++){h+='<tr><td>'+u.time[i].slice(5)+'</td><td>'+(WC[u.weather_code[i]]||'')+'</td><td style="text-align:right;">'+u.temperature_2m_max[i]+'/'+u.temperature_2m_min[i]+'°</td><td style="text-align:right;">'+u.precipitation_probability_max[i]+'%</td></tr>'}h+='</table>';el.innerHTML=h}).catch(function(){el.innerHTML='⚠️ 获取失败'});
+.then(function(r){return r.json()}).then(function(d){if(!d||!d.current||!d.daily){el.innerHTML='⚠️ 数据异常';return;}var c=d.current,u=d.daily,h='<b>'+v[2]+'：</b>'+(WC[c.weather_code]||'')+' <b style="font-size:18px;">'+c.temperature_2m+'°C</b>（体感'+c.apparent_temperature+'°C）  💧'+c.relative_humidity_2m+'%  🌬️'+c.wind_speed_10m+'km/h';h+='<table style="margin-top:4px;"><tr style="font-weight:700;"><td>日期</td><td>天气</td><td style="text-align:right;">高/低</td><td style="text-align:right;">🌧️</td></tr>';for(var i=0;i<u.time.length;i++){h+='<tr><td>'+u.time[i].slice(5)+'</td><td>'+(WC[u.weather_code[i]]||'')+'</td><td style="text-align:right;">'+u.temperature_2m_max[i]+'/'+u.temperature_2m_min[i]+'°</td><td style="text-align:right;">'+u.precipitation_probability_max[i]+'%</td></tr>'}h+='</table>';el.innerHTML=h}).catch(function(){el.innerHTML='⚠️ 获取失败'});
 };
 window.loadM=function(){
 var v=document.getElementById('mSpot').value.split(','),el=document.getElementById('mOut');
+if(!v||v.length<3){el.innerHTML='⚠️ 参数错误';return;}
 el.innerHTML='⏳ 获取 '+v[2]+' 海洋数据…';
 function dir(d){return ['北','东北','东','东南','南','西南','西','西北'][Math.round(d/45)%8]}
 fetch('https://marine-api.open-meteo.com/v1/marine?latitude='+v[0]+'&longitude='+v[1]+'&current=wave_height,wave_direction,wave_period,sea_surface_temperature&daily=wave_height_max,wave_direction_dominant&timezone=Asia/Shanghai&forecast_days=3')
-.then(function(r){return r.json()}).then(function(d){var c=d.current,u=d.daily,h='<b>'+v[2]+'</b><br>🌡️水温 <b style="font-size:18px;color:#0891b2;">'+c.sea_surface_temperature+'°C</b> '+(c.sea_surface_temperature>=22?'✅可下水':'⚠️偏凉')+'<br>🌊浪高 '+c.wave_height+'m '+(c.wave_height<0.3?'（赶海绝佳）':c.wave_height<0.5?'（安全）':c.wave_height<1?'（注意）':'（⚠️大浪）')+'<br>🧭浪向 '+dir(c.wave_direction)+' ⏱周期'+c.wave_period+'s';h+='<table style="margin-top:4px;"><tr style="font-weight:700;"><td>日期</td><td style="text-align:right;">浪高</td><td style="text-align:right;">浪向</td></tr>';for(var i=0;i<u.time.length;i++){h+='<tr><td>'+u.time[i].slice(5)+'</td><td style="text-align:right;">'+u.wave_height_max[i]+'m</td><td style="text-align:right;">'+dir(u.wave_direction_dominant[i])+'</td></tr>'}h+='</table>';el.innerHTML=h}).catch(function(){el.innerHTML='⚠️ 获取失败'});
+.then(function(r){return r.json()}).then(function(d){if(!d||!d.current||!d.daily){el.innerHTML='⚠️ 数据异常';return;}var c=d.current,u=d.daily,h='<b>'+v[2]+'</b><br>🌡️水温 <b style="font-size:18px;color:#0891b2;">'+c.sea_surface_temperature+'°C</b> '+(c.sea_surface_temperature>=22?'✅可下水':'⚠️偏凉')+'<br>🌊浪高 '+c.wave_height+'m '+(c.wave_height<0.3?'（赶海绝佳）':c.wave_height<0.5?'（安全）':c.wave_height<1?'（注意）':'（⚠️大浪）')+'<br>🧭浪向 '+dir(c.wave_direction)+' ⏱周期'+c.wave_period+'s';h+='<table style="margin-top:4px;"><tr style="font-weight:700;"><td>日期</td><td style="text-align:right;">浪高</td><td style="text-align:right;">浪向</td></tr>';for(var i=0;i<u.time.length;i++){h+='<tr><td>'+u.time[i].slice(5)+'</td><td style="text-align:right;">'+u.wave_height_max[i]+'m</td><td style="text-align:right;">'+dir(u.wave_direction_dominant[i])+'</td></tr>'}h+='</table>';el.innerHTML=h}).catch(function(){el.innerHTML='⚠️ 获取失败'});
 };
 loadW();loadM();
 })();
